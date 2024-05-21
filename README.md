@@ -1,4 +1,4 @@
-# LexiGenius
+## LexiGenius
 
 #Introduction to Lexi Genius
 
@@ -21,11 +21,11 @@ Lexi Genius is a powerful offline tool designed to summarize PDF documents effic
 5. User Interface and Interaction:
    The application is built using Streamlit, providing a simple and interactive user interface. Users can upload their PDF files, adjust summarization parameters, and generate summaries with a click of a button. The app includes features like file upload, parameter adjustment, and a progress bar to enhance the user experience.
 
-#Usage
+# Usage
 
 - Upload a PDF: Use the file uploader to select a PDF file for summarization.
 - Adjust Parameters: Customize the maximum summary length using the slider provided.
 - Generate Summary: Click the "Generate Summary" button to start the summarization process. The application will display the PDF and show a progress bar while summarizing.
 - View Summary: Once the summarization is complete, the summary will be displayed within the app.
 
-Lexi Genius* is designed to make the task of summarizing large PDF documents easy and efficient, providing users with quick insights and saving valuable time.
+Lexi Genius  is designed to make the task of summarizing large PDF documents easy and efficient, providing users with quick insights and saving valuable time.
