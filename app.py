@@ -6,12 +6,35 @@ import torch
 import base64
 import os
 
-# Model and tokenizer loading
+
+st.set_page_config(
+    page_title="LEXI GENIUS || AN LLM BRILLANCE",
+    page_icon="📚",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+
+st.markdown(
+    """
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BP1FV8KVQD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BP1FV8KVQD');
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
+
+
 checkpoint = "t5-small"
 tokenizer = T5Tokenizer.from_pretrained(checkpoint)
 model = T5ForConditionalGeneration.from_pretrained(checkpoint)
 
-# File loader and preprocessing
 def file_preprocessing(file):
     loader = PyPDFLoader(file)
     pages = loader.load_and_split()
@@ -20,14 +43,14 @@ def file_preprocessing(file):
     final_texts = [text.page_content for text in texts]
     return final_texts
 
-# Text summarization function
+
 def text_summarization(text, max_length=150, min_length=50):
     input_ids = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=max_length, min_length=min_length, truncation=True)
     summary_ids = model.generate(input_ids)
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     return summary
 
-# Display PDF function
+
 def displayPDF(file):
     try:
         with open(file, "rb") as f:
@@ -38,17 +61,9 @@ def displayPDF(file):
     except Exception as e:
         st.error(f"An error occurred while displaying the PDF: {str(e)}")
 
-# Main function
-def main():
-    # Set background color and page layout
-    st.set_page_config(
-        page_title="LEXI GENIUS || AN OFFLINE LLM BRILLANCE",
-        page_icon="📚",
-        layout="wide",
-        initial_sidebar_state="expanded",
-    )
 
-    # Custom CSS to style the output
+def main():
+  
     st.markdown(
         """
         <style>
@@ -79,19 +94,19 @@ def main():
         unsafe_allow_html=True,
     )
 
-    # Main content
-    col1, col2 = st.columns([1, 3])  # Adjusting column widths
+   
+    col1, col2 = st.columns([1, 3])  
 
-    # Add a logo next to the title (reduced size)
+   
     col1.image("https://www.shutterstock.com/image-vector/chatbot-icon-concept-chat-bot-600nw-2132342911.jpg", width=150)
 
-    # Title with white color on a black background
-    col2.title("LEXI GENIUS || AN OFFLINE LLM BRILLANCE")
+   
+    col2.title("LEXI GENIUS || AN LLM BRILLANCE")
 
-    # Image on the left, text on the right
+   
     col1.image("https://pdf-summarizer.com/images/PDF%20Summarizer%20(3).png", use_column_width=True)
 
-    # Text on the right with white color
+   
     col2.markdown(
         """
         Welcome to Lexi Genius! This tool allows you to upload a PDF file and generates a summary.
@@ -109,7 +124,7 @@ def main():
     if uploaded_file is not None:
         col2.write(f"Selected File: {uploaded_file.name}")
         
-        # Interactive parameters
+      
         max_length = col2.slider("Maximum Summary Length", min_value=50, max_value=300, value=150)
 
         if col2.button("Generate Summary"):
