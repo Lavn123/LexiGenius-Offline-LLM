@@ -6,14 +6,12 @@ import torch
 import base64
 import os
 
-
 st.set_page_config(
     page_title="LEXI GENIUS || AN LLM BRILLANCE",
     page_icon="📚",
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
 
 st.markdown(
     """
@@ -29,7 +27,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
 
 checkpoint = "t5-small"
 tokenizer = T5Tokenizer.from_pretrained(checkpoint)
@@ -59,11 +56,12 @@ def displayPDF(file):
         pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600" type="application/pdf"></iframe>'
         st.markdown(pdf_display, unsafe_allow_html=True)
     except Exception as e:
-        st.error(f"An error occurred while displaying the PDF: {str(e)}")
-
-
+        st.error(f"An error occurred while displaying the PDF: {str(e)}"
+                 
+# Main function
 def main():
-  
+    # Custom CSS to style the output
+
     st.markdown(
         """
         <style>
@@ -100,7 +98,7 @@ def main():
    
     col1.image("https://www.shutterstock.com/image-vector/chatbot-icon-concept-chat-bot-600nw-2132342911.jpg", width=150)
 
-   
+
     col2.title("LEXI GENIUS || AN LLM BRILLANCE")
 
    
