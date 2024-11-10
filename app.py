@@ -6,6 +6,30 @@ import torch
 import base64
 import os
 
+# Set page configuration (this should be the first Streamlit command)
+st.set_page_config(
+    page_title="LEXI GENIUS || AN LLM BRILLANCE",
+    page_icon="📚",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+# Add Google Tag Manager script
+st.markdown(
+    """
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BP1FV8KVQD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BP1FV8KVQD');
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Model and tokenizer loading
 checkpoint = "t5-small"
 tokenizer = T5Tokenizer.from_pretrained(checkpoint)
@@ -40,14 +64,6 @@ def displayPDF(file):
 
 # Main function
 def main():
-    # Set background color and page layout
-    st.set_page_config(
-        page_title="LEXI GENIUS || AN OFFLINE LLM BRILLANCE",
-        page_icon="📚",
-        layout="wide",
-        initial_sidebar_state="expanded",
-    )
-
     # Custom CSS to style the output
     st.markdown(
         """
@@ -86,7 +102,7 @@ def main():
     col1.image("https://www.shutterstock.com/image-vector/chatbot-icon-concept-chat-bot-600nw-2132342911.jpg", width=150)
 
     # Title with white color on a black background
-    col2.title("LEXI GENIUS || AN OFFLINE LLM BRILLANCE")
+    col2.title("LEXI GENIUS || AN LLM BRILLANCE")
 
     # Image on the left, text on the right
     col1.image("https://pdf-summarizer.com/images/PDF%20Summarizer%20(3).png", use_column_width=True)
